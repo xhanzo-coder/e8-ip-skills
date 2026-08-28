@@ -1,0 +1,24 @@
+{
+  "recommended_threshold": 0.13,
+  "should_trigger": [
+    {"text": "我想有一个以后能反复出镜的小人，请根据这几张生活照先定人物。", "family": "implicit_personal_character"},
+    {"text": "眼睛和发型在不同图片里总变化，能检查这个角色包为什么不稳定吗？", "family": "package_consistency"},
+    {"text": "请用我的正式人物做一个挥手动作，保持原来的潮玩比例。", "family": "action_derivative"},
+    {"text": "这套参考画法不错，先帮我的人物试一张候选，确认后再保存成新风格。", "family": "custom_style_gate"},
+    {"text": "把这张职业照重构成街头像素个人角色，不要照搬西装和背景。", "family": "pixel_formal_photo"},
+    {"text": "黑白人物复制了参考图的眼镜和咖啡杯，请修掉参考污染。", "family": "reference_contamination"}
+  ],
+  "should_not_trigger": [
+    {"text": "给这张照片加漫画速度线和对白框。", "family": "photo_effect"},
+    {"text": "帮我做账号头像和昵称的品牌定位建议。", "family": "brand_avatar_strategy"},
+    {"text": "画一个用于游戏关卡的一次性NPC。", "family": "generic_npc"},
+    {"text": "给小红书笔记生成六张插画。", "family": "platform_illustration"},
+    {"text": "设计餐厅的猫咪Logo。", "family": "logo"}
+  ],
+  "near_neighbor": [
+    {"text": "把照片里的人抠出来换成白背景，人物外观不要改变。", "family": "photo_cleanup"},
+    {"text": "分析这张动画角色使用了什么画风，不需要复用人物。", "family": "style_analysis_only"},
+    {"text": "根据我的品牌关键词设计一个抽象符号，不要人物。", "family": "abstract_brand_mark"},
+    {"text": "用现有角色做文章流程图，人物本身已经确定且不需要修改。", "family": "downstream_diagram"}
+  ]
+}

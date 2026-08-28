@@ -1,0 +1,4 @@
+interface:
+  display_name: "E8 视觉 IP 工作室"
+  short_description: "设计并复用潮玩、黑白漫画或街头像素个人角色"
+  default_prompt: "使用 $e8-visual-ip 根据我提供的照片或人物图创建个人视觉 IP；如果我没有指定风格，先展示全部内置风格预览供我选择。"

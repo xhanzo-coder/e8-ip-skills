@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "fixture_label": "file-backed fixture",
+  "evidence_scope": "根据用户提供的特朗普与 Sam Altman 黑白候选人工视觉审计形成的身份失败模式；不包含模型重跑，不等于视觉 A/B 通过。",
+  "cases": [
+    {
+      "id": "trump-category-symbols-not-likeness",
+      "person_label": "Donald Trump",
+      "observed_problem": "金色侧梳发型与西装领带成立，但大圆眼、极简中下脸和统一幼化使脸部无法独立识别。",
+      "identity_anchors": {
+        "identity_anchor_1_face_proportion": "PASS",
+        "identity_anchor_2_hairline_forehead": "PASS",
+        "identity_anchor_3_eye_brow_relation": "FAIL",
+        "identity_anchor_4_mid_lower_face": "FAIL",
+        "identity_anchor_5_age_mood": "FAIL"
+      },
+      "expected_status": "rejected"
+    },
+    {
+      "id": "sam-hair-fixed-face-still-generic",
+      "person_label": "Sam Altman",
+      "observed_problem": "第二版修正露额上扫发型，但脸部比例、大圆眼、中下脸和年龄气质仍是通用少年。",
+      "identity_anchors": {
+        "identity_anchor_1_face_proportion": "FAIL",
+        "identity_anchor_2_hairline_forehead": "PASS",
+        "identity_anchor_3_eye_brow_relation": "FAIL",
+        "identity_anchor_4_mid_lower_face": "FAIL",
+        "identity_anchor_5_age_mood": "FAIL"
+      },
+      "expected_status": "rejected"
+    }
+  ]
+}

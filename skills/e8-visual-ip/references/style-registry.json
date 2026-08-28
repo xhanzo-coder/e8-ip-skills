@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.1",
+  "registry_role": "内置风格路由与能力真源；风格细节以 definition 指向的文件为准。",
+  "styles": [
+    {
+      "schema_version": "1.1",
+      "id": "soft-toy-chibi",
+      "display_name": "软萌潮玩 Q 版",
+      "aliases": ["软萌潮玩", "生活潮玩Q版", "手账潮玩人物", "Q版三视图", "潮玩角色设定"],
+      "catalog_preview": "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
+      "catalog_primary_style": "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
+      "catalog_summary": "彩色、圆润、粗暖线条和紧凑玩偶比例，强调缩小后的亲和与识别。",
+      "catalog_best_for": ["生活方式个人分身", "表情与动作", "贴纸与换装"],
+      "transformation_policy": "structural-redraw",
+      "reference_maturity": "multi-reference",
+      "default_likeness": "recognizable",
+      "definition": "references/styles/soft-toy-chibi.md",
+      "reference_assets": [
+        "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
+        "assets/style-references/soft-toy-chibi/expressive-eye-sheet.png",
+        "assets/style-references/soft-toy-chibi/accessory-led-sheet.png",
+        "assets/style-references/soft-toy-chibi/round-open-eye-sheet.png"
+      ],
+      "negative_examples": [],
+      "supported_outputs": ["base-character", "turnaround", "avatar", "expression", "action", "sticker", "outfit"],
+      "unverified_outputs": ["scene"],
+      "run_validator": null,
+      "prompt_profiles": ["references/styles/soft-toy-profiles/minimal-face.md"]
+    },
+    {
+      "schema_version": "1.1",
+      "id": "monochrome-manga-sheet",
+      "display_name": "极简黑白漫画设定风",
+      "aliases": ["黑白漫画人物", "极简黑白线稿", "黑白三视图", "漫画设定稿", "纯黑白人物"],
+      "catalog_preview": "assets/style-references/monochrome-manga-sheet/reference.png",
+      "catalog_primary_style": "assets/style-references/monochrome-manga-sheet/front-character.png",
+      "catalog_summary": "纯黑白成品、克制线条和大量留白，以剪影与黑白面积保持身份。",
+      "catalog_best_for": ["黑白角色设定", "简洁头像", "正侧背三视图"],
+      "transformation_policy": "structural-redraw",
+      "reference_maturity": "single-reference",
+      "default_likeness": "recognizable",
+      "definition": "references/styles/monochrome-manga-sheet.md",
+      "reference_assets": [
+        "assets/style-references/monochrome-manga-sheet/reference.png",
+        "assets/style-references/monochrome-manga-sheet/front-character.png",
+        "assets/style-references/monochrome-manga-sheet/face-hair-detail.png"
+      ],
+      "negative_examples": [
+        "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-head-large.png",
+        "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-body-long.png"
+      ],
+      "supported_outputs": ["base-character", "turnaround", "avatar"],
+      "unverified_outputs": ["expression", "action", "sticker", "outfit", "scene"],
+      "run_validator": "scripts/validate_monochrome_run.py",
+      "prompt_profiles": []
+    },
+    {
+      "schema_version": "1.1",
+      "id": "streetwear-pixel-sheet",
+      "display_name": "街头像素角色设定风",
+      "aliases": ["街头像素人物", "像素个人IP", "像素三视图", "青年像素角色", "像素角色设定稿"],
+      "catalog_preview": "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
+      "catalog_primary_style": "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
+      "catalog_summary": "有限色板、统一像素网格和街头服装体块，具有复古游戏角色感。",
+      "catalog_best_for": ["像素个人头像", "游戏化角色", "街头感三视图"],
+      "transformation_policy": "structural-redraw",
+      "reference_maturity": "limited-multi-reference",
+      "default_likeness": "interpreted",
+      "definition": "references/styles/streetwear-pixel-sheet.md",
+      "reference_assets": [
+        "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
+        "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
+        "assets/style-references/streetwear-pixel-sheet/accessory-purple-head.png",
+        "assets/style-references/streetwear-pixel-sheet/hair-accent-dark-sheet.png",
+        "assets/style-references/streetwear-pixel-sheet/hair-accent-dark-front.png",
+        "assets/style-references/streetwear-pixel-sheet/hair-accent-dark-head.png"
+      ],
+      "negative_examples": [],
+      "supported_outputs": ["base-character", "turnaround", "avatar"],
+      "unverified_outputs": ["expression", "action", "sticker", "outfit", "scene"],
+      "run_validator": "scripts/validate_pixel_run.py",
+      "prompt_profiles": []
+    }
+  ]
+}

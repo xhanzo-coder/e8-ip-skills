@@ -1,0 +1,18 @@
+{
+  "name": "e8-visual-ip",
+  "version": "2.1.0",
+  "owner": "E8 Skill Maintainers",
+  "updated_at": "2026-08-28",
+  "review_due": "2026-11-27",
+  "review_cadence": "quarterly",
+  "status": "active",
+  "maturity_tier": "library",
+  "lifecycle_stage": "library",
+  "context_budget_tier": "library",
+  "skill_archetype": "visual-character-system",
+  "target_platforms": ["agent-skills-compatible", "openai"],
+  "factory_components": ["agents", "assets", "evals", "references", "reports", "schemas", "scripts", "security", "tests"],
+  "output_contract": "首次创建且未指定风格时先展示全部内置风格的正式预览目录并等待选择；风格确定后再交付人物方案。每次阶段授权默认只生成一张正面候选并执行身份、风格、任务三层 QA，不自动连烧第二版；经用户正式确认后保存可移植人物定义、身份锚点和风格锚点。",
+  "rollback_boundary": "普通运行不覆盖旧目录；角色包更新前创建版本化备份，可回退到最近一次已确认人物或风格。",
+  "asset_distribution": "repository-mit-user-confirmed-2026-08-29"
+}

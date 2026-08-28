@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-08-27",
+  "capabilities": {
+    "file_write": {
+      "decision": "approved",
+      "reviewer": "E8 Skill Maintainers",
+      "scope": "scripts/character_pack.py 仅可在用户明确指定的工作区内创建或更新 .creator-space/visual-ip/characters/，并在更新前创建版本化备份。普通任务输出由执行环境写入用户指定目录或独立 visual-ip 运行目录。",
+      "reason": "正式人物与风格需要持久保存供后续 Skill 复用；角色包脚本已经执行路径边界、非覆盖创建、原子写入和更新备份。",
+      "expires_at": "2026-11-27",
+      "evidence": [
+        "tests/smoke_lifecycle.py",
+        "references/character-package.md",
+        "reports/security_trust_report.md"
+      ],
+      "target_enforcement": {
+        "openai": "Skill 指令要求明确确认后才调用脚本；脚本验证 workspace-root 和目标子树。",
+        "claude": "适配器必须保留用户确认门、workspace-root 参数和角色包子树边界。",
+        "generic": "执行器必须保留用户确认门、workspace-root 参数和角色包子树边界。",
+        "vscode": "工作区信任不替代人物确认；脚本仍只接受显式 workspace-root。"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "recommended_threshold": 0.13,
+  "should_trigger": [
+    {"text": "这张证件照很普通，请你自己提取我的特征并重新设计成固定人物形象。", "family": "implicit_redesign"},
+    {"text": "以后每篇内容都想用同一个卡通分身，先帮我把基础角色定下来。", "family": "reuse_intent"},
+    {"text": "给已确认角色换成纯黑白漫画设定稿，但脸和招牌耳饰要还是同一个人。", "family": "style_switch"},
+    {"text": "我的像素人物正面已经通过，接着做背面和侧面角色设定。", "family": "pixel_turnaround"},
+    {"text": "这两版都很好看，可我怀疑第二版已经不是同一个人物了，帮我审查。", "family": "identity_audit"},
+    {"text": "为保存过的角色新增一套冬季换装，不能改变人物基准。", "family": "outfit_derivative"},
+    {"text": "现有图只是把我的照片描了一遍，没有角色感，请重新来。", "family": "implicit_ip_failure"},
+    {"text": "我想把这个正式人物做成一组贴纸表情，并保持眼型和发型一致。", "family": "sticker_derivative"}
+  ],
+  "should_not_trigger": [
+    {"text": "给我的自媒体账号确定一个更有商业价值的IP定位。", "family": "business_ip"},
+    {"text": "把自拍调成复古胶片色，只改色调。", "family": "photo_filter"},
+    {"text": "为这篇教程画一张信息结构图。", "family": "infographic"},
+    {"text": "设计一个字母组合品牌标志。", "family": "logo"},
+    {"text": "做一只通用像素宠物角色，不代表任何真人。", "family": "generic_pet"}
+  ],
+  "near_neighbor": [
+    {"text": "解释什么是个人视觉IP，我暂时不需要设计。", "family": "explain_only"},
+    {"text": "评价这张普通插画好不好看，不检查固定人物或风格一致性。", "family": "generic_art_review"},
+    {"text": "把现成角色放到海报里并完成整张宣传图。", "family": "downstream_poster"},
+    {"text": "帮企业虚构一个完全原创的人物吉祥物，与员工照片无关。", "family": "corporate_mascot"}
+  ]
+}

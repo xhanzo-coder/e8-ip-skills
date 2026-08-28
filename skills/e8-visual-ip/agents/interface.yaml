@@ -1,0 +1,23 @@
+interface:
+  display_name: "E8 视觉 IP 工作室"
+  short_description: "设计、校验并复用可持续使用的个人角色"
+  default_prompt: "使用 $e8-visual-ip 查看我的参考图；如果我没有指定风格，先展示全部内置风格预览供我选择，再给出人物设计方案并等待确认。"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "agent-skills-compatible"
+  activation:
+    mode: "automatic-or-explicit"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "powershell"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "allow-metadata-only"
+  degradation:
+    openai: "native-image-tool-plus-local-character-pack"
+    agent-skills-compatible: "requires-compatible-raster-image-tool-and-explicit-interaction-gates"
+    generic: "requires-compatible-raster-image-tool"

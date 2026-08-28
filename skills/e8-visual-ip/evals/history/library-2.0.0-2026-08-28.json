@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-28",
+  "skill_version": "2.0.0",
+  "mode": "library",
+  "change_scope": "monochrome identity-preserving refactor",
+  "resource_boundary": {
+    "status": "pass",
+    "estimated_initial_load_tokens": 1145,
+    "limit": 1300
+  },
+  "governance": {
+    "status": "pass",
+    "score": 90,
+    "declared_tier": "library",
+    "warnings": 0
+  },
+  "trigger_eval": {
+    "threshold": 0.13,
+    "sets": {
+      "dev": {"false_positives": 0, "false_negatives": 0, "precision": 1.0, "recall": 1.0},
+      "holdout": {"false_positives": 0, "false_negatives": 0, "precision": 1.0, "recall": 1.0},
+      "blind_holdout": {"false_positives": 0, "false_negatives": 0, "precision": 1.0, "recall": 1.0},
+      "adversarial": {"false_positives": 0, "false_negatives": 0, "precision": 1.0, "recall": 1.0}
+    }
+  },
+  "output_eval": {
+    "execution_mode": "recorded_fixture",
+    "case_count": 7,
+    "file_backed_case_count": 3,
+    "baseline_pass_rate": 0.0,
+    "with_skill_pass_rate": 100.0,
+    "visual_model_evidence": "missing evidence"
+  },
+  "monochrome_contract": {
+    "schema_version": "2.0",
+    "single_candidate_only": true,
+    "default_likeness": "recognizable",
+    "recognizable_reference_strategy": "identity-first",
+    "identity_anchor_count": 5,
+    "style_anchor_count": 8,
+    "regression_fixtures": [
+      "trump-category-symbols-not-likeness",
+      "sam-hair-fixed-face-still-generic"
+    ],
+    "real_regenerated_visual_evidence": "missing evidence"
+  },
+  "functional_tests": {
+    "status": "pass",
+    "tests": [
+      "test_style_registry.py",
+      "test_package_integrity.py",
+      "validate_soft_toy_contract.py",
+      "validate_monochrome_contract.py",
+      "validate_pixel_contract.py",
+      "test_monochrome_run_contract.py",
+      "test_monochrome_identity_regressions.py",
+      "test_pixel_run_contract.py",
+      "smoke_lifecycle.py"
+    ]
+  }
+}

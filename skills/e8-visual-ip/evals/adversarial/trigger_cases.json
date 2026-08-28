@@ -1,0 +1,25 @@
+{
+  "recommended_threshold": 0.13,
+  "should_trigger": [
+    {"text": "不要做品牌战略，只根据照片建立可保存、可继续画三视图的个人角色。", "family": "explicit_visual_boundary"},
+    {"text": "虽然只要一张，但它会成为以后所有表情的正式基础人物，请按个人视觉IP设计。", "family": "single_image_reusable"},
+    {"text": "先别生成文章配图，我要修复配图里反复出现的固定角色，让他恢复正式眼型。", "family": "character_repair_in_context"},
+    {"text": "不是给照片套像素滤镜，而是重新设计一个能复用的像素个人IP。", "family": "anti_filter_redesign"},
+    {"text": "我只想比较三张人物是不是同一个正式角色，不评价画面审美。", "family": "identity_only_audit"}
+  ],
+  "should_not_trigger": [
+    {"text": "给照片套一个潮玩Q版滤镜，用完这次就行。", "family": "one_off_q_filter"},
+    {"text": "写一篇介绍个人IP形象设计方法的文章。", "family": "write_article"},
+    {"text": "帮我规划如何靠Q版形象涨粉和变现。", "family": "commercial_strategy"},
+    {"text": "设计一个像素风Logo，里面不要人物。", "family": "pixel_logo"},
+    {"text": "给企业做一套无真人原型的品牌吉祥物规范。", "family": "brand_mascot_system"},
+    {"text": "把已经确认的角色直接排进小红书九宫格，不修改角色。", "family": "platform_layout"}
+  ],
+  "near_neighbor": [
+    {"text": "把我的自拍画成黑白线稿头像，不需要角色包和后续一致性。", "family": "one_off_line_avatar"},
+    {"text": "检查一组文章插图的色彩是否统一，但里面没有固定角色。", "family": "visual_consistency_no_character"},
+    {"text": "列出适合年轻女性的Q版风格关键词，不实际设计人物。", "family": "style_brainstorm"},
+    {"text": "教我怎么用生图工具做人物一致性，我自己操作。", "family": "tutorial_only"},
+    {"text": "创建一个游戏用像素角色，但不以我或任何固定人物为原型。", "family": "generic_game_character"}
+  ]
+}

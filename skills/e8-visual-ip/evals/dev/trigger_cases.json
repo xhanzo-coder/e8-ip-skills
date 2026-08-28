@@ -1,0 +1,45 @@
+{
+  "recommended_threshold": 0.13,
+  "should_trigger": [
+    {"text": "根据我上传的照片设计一个软萌潮玩Q版个人视觉IP。", "family": "toy_create"},
+    {"text": "我没有照片，根据我的性格和职业设计一个可长期复用的卡通分身。", "family": "description_create"},
+    {"text": "之前的图只是照片手绘化，帮我重新设计成真正的视觉IP。", "family": "character_redesign"},
+    {"text": "我只有一张普通正装证件照，也能帮我设计成个人角色吗？", "family": "formal_photo"},
+    {"text": "把已经确认的软萌潮玩人物做成正面、侧面和背面三视图。", "family": "toy_turnaround"},
+    {"text": "这个潮玩人物虽然像我，但长腿收腰，帮我检查风格为什么漂了。", "family": "toy_style_audit"},
+    {"text": "按内置软萌潮玩风格帮我生成，参考图由你根据我的身份特征自动选择。", "family": "toy_reference_routing"},
+    {"text": "这个潮玩人物是闭眼笑脸，可以直接作为正式基础人物吗？", "family": "toy_eye_anchor"},
+    {"text": "我要竖向豆点眼、胶囊脸、粗棕线和紧凑比例的潮玩人物，但身份换成我。", "family": "toy_minimal_profile"},
+    {"text": "用极简黑白漫画设定风，根据我的照片设计一个完整个人IP。", "family": "mono_create"},
+    {"text": "我要最终成品就是纯黑白，不是之后还要上色的线稿。", "family": "mono_final_medium"},
+    {"text": "这套黑白风格只有一张参考图，我是长发，先帮我稳妥测试。", "family": "mono_single_reference"},
+    {"text": "黑白漫画正面人物已经确认，继续做标准侧面和背面。", "family": "mono_turnaround"},
+    {"text": "为什么黑白人物复制了参考图的圆眼镜、连帽衫和咖啡杯？", "family": "mono_contamination"},
+    {"text": "结果虽然纯黑白，但还是普通成年动漫比例，为什么不像风格参考？", "family": "mono_generic_anime_failure"},
+    {"text": "第一次生成黑白正面人物时，风格裁图、身份图和完整三视图应该怎么传？", "family": "mono_reference_order"},
+    {"text": "用街头像素角色设定风，根据我的照片设计一个像素个人IP。", "family": "pixel_create"},
+    {"text": "我短发，平时一直戴耳机，帮我自动选择适合的像素参考。", "family": "pixel_route_accessory"},
+    {"text": "我的挑染和层次发型最有辨识度，想做暗色像素角色。", "family": "pixel_route_hair"},
+    {"text": "像素正面人物已经确认，继续做标准侧面和背面三视图。", "family": "pixel_turnaround"},
+    {"text": "生成结果像普通插画套了马赛克，帮我检查并修复这个像素人物。", "family": "pixel_audit"},
+    {"text": "为什么像素人物复制了参考图的眼镜、耳机和紫色卫衣？", "family": "pixel_contamination"},
+    {"text": "给我已经确认的人物做六个不同表情。", "family": "character_derivative"},
+    {"text": "读取当前工作区保存的个人IP，帮我做一个讲解动作。", "family": "character_reuse"},
+    {"text": "我上传了一套马克笔人物参考，帮正式角色增加这种自定义风格。", "family": "custom_style"},
+    {"text": "帮我检查这几张图是不是同一个角色，身份和风格有没有漂。", "family": "consistency_audit"},
+    {"text": "先分析我的照片适合保留哪些人物特征，不要生成图片。", "family": "analysis_only"}
+  ],
+  "should_not_trigger": [
+    {"text": "帮我做个人IP定位和商业变现规划。", "family": "brand_strategy"},
+    {"text": "把这张自拍直接变成水彩照片，不需要长期角色。", "family": "one_off_filter"},
+    {"text": "给工作室设计一个Logo。", "family": "logo"},
+    {"text": "用我的角色给这篇文章配三张流程解释图。", "family": "article_visual"},
+    {"text": "画一个没有固定身份、用完就丢的可爱潮玩小人。", "family": "generic_mascot"}
+  ],
+  "near_neighbor": [
+    {"text": "把我这张照片做成一次性的日漫头像，不需要以后保持同一个人物。", "family": "one_off_anime_avatar"},
+    {"text": "先帮我规划个人品牌的人设、受众和商业路线，不画人物。", "family": "brand_persona"},
+    {"text": "我已有角色，只想让它作为公众号封面中的一个小元素。", "family": "downstream_cover"},
+    {"text": "给产品设计一个动物吉祥物，不需要映射任何真人身份。", "family": "product_mascot"}
+  ]
+}

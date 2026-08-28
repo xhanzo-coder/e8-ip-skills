@@ -1,0 +1,40 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Personal E8 state and generated artifacts
+/.creator-space/
+/visual-ip/
+/outputs/
+/output/
+/tmp/
+/.codex-tmp/
+/generated_images/
+
+# Local visual-IP material
+ip形象测试/
+private-assets/
+personal-fixtures/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Local environments
+.venv/
+venv/
+
+# Machine-specific generated evidence
+skills/*/reports/security_trust_report.json
+skills/*/reports/output_quality_scorecard.json
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
