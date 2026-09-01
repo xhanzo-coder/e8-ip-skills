@@ -17,6 +17,8 @@ REQUIRED_FIELDS = {
     "id",
     "display_name",
     "aliases",
+    "lifecycle_status",
+    "catalog_visible",
     "catalog_preview",
     "catalog_primary_style",
     "catalog_summary",
@@ -39,6 +41,7 @@ ALLOWED_REFERENCE_MATURITY = {
     "multi-reference",
 }
 ALLOWED_LIKENESS = {"symbolic", "interpreted", "recognizable", "close"}
+ALLOWED_LIFECYCLE_STATUS = {"candidate", "active", "deprecated"}
 ALLOWED_OUTPUTS = {
     "base-character",
     "turnaround",
@@ -90,7 +93,7 @@ def require_string_list(entry: dict[str, Any], field: str, *, allow_empty: bool)
     return value
 
 
-def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | str]:
+def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | str | bool]:
     missing = REQUIRED_FIELDS - set(entry)
     if missing:
         raise ValueError(f"风格注册项缺少字段：{sorted(missing)}")
@@ -98,8 +101,14 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
     style_id = entry["id"]
     if not isinstance(style_id, str) or STYLE_ID_PATTERN.fullmatch(style_id) is None:
         raise ValueError(f"非法风格 id：{style_id!r}")
-    if entry["schema_version"] != "1.1":
-        raise ValueError(f"{style_id} 的 schema_version 必须为 1.1。")
+    if entry["schema_version"] != "1.2":
+        raise ValueError(f"{style_id} 的 schema_version 必须为 1.2。")
+    lifecycle_status = entry["lifecycle_status"]
+    if lifecycle_status not in ALLOWED_LIFECYCLE_STATUS:
+        raise ValueError(f"{style_id} 的 lifecycle_status 非法。")
+    catalog_visible = entry["catalog_visible"]
+    if not isinstance(catalog_visible, bool):
+        raise TypeError(f"{style_id}.catalog_visible 必须为布尔值。")
     if entry["transformation_policy"] not in ALLOWED_TRANSFORMATION_POLICIES:
         raise ValueError(f"{style_id} 的 transformation_policy 非法。")
     if entry["reference_maturity"] not in ALLOWED_REFERENCE_MATURITY:
@@ -111,7 +120,11 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
     catalog_best_for = require_string_list(entry, "catalog_best_for", allow_empty=False)
     reference_assets = require_string_list(entry, "reference_assets", allow_empty=False)
     negative_examples = require_string_list(entry, "negative_examples", allow_empty=True)
-    supported_outputs = require_string_list(entry, "supported_outputs", allow_empty=False)
+    supported_outputs = require_string_list(
+        entry,
+        "supported_outputs",
+        allow_empty=lifecycle_status != "active",
+    )
     unverified_outputs = require_string_list(entry, "unverified_outputs", allow_empty=True)
     prompt_profiles = require_string_list(entry, "prompt_profiles", allow_empty=True)
 
@@ -135,6 +148,15 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
     overlap = set(supported_outputs) & set(unverified_outputs)
     if overlap:
         raise ValueError(f"{style_id} 的已支持与未验证产物重叠：{sorted(overlap)}")
+    if lifecycle_status == "active" and catalog_visible is not True:
+        raise ValueError(f"{style_id} 是 active 风格，必须在目录中可见。")
+    if lifecycle_status in {"candidate", "deprecated"} and catalog_visible is not False:
+        raise ValueError(f"{style_id} 不是 active 风格，不得在正式目录中可见。")
+    if lifecycle_status == "candidate":
+        if supported_outputs:
+            raise ValueError(f"候选风格 {style_id} 不得提前声明已验证产物。")
+        if set(unverified_outputs) != ALLOWED_OUTPUTS:
+            raise ValueError(f"候选风格 {style_id} 必须把全部产物标为未验证。")
 
     definition = skill_root / entry["definition"]
     if not definition.is_file():
@@ -143,6 +165,7 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
     expected_scalars = {
         "id": style_id,
         "display_name": entry["display_name"],
+        "lifecycle_status": lifecycle_status,
         "transformation_policy": entry["transformation_policy"],
         "reference_maturity": entry["reference_maturity"],
         "default_likeness": entry["default_likeness"],
@@ -167,6 +190,8 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
 
     return {
         "id": style_id,
+        "lifecycle_status": lifecycle_status,
+        "catalog_visible": catalog_visible,
         "alias_count": len(aliases),
         "catalog_preview": catalog_preview,
         "catalog_primary_style": catalog_primary_style,
@@ -179,8 +204,8 @@ def validate_entry(skill_root: Path, entry: dict[str, Any]) -> dict[str, int | s
 def validate_registry(skill_root: Path) -> dict[str, Any]:
     registry_path = skill_root / "references" / "style-registry.json"
     registry = load_json(registry_path)
-    if registry["schema_version"] != "1.1":
-        raise ValueError("style-registry.json 的 schema_version 必须为 1.1。")
+    if registry["schema_version"] != "1.2":
+        raise ValueError("style-registry.json 的 schema_version 必须为 1.2。")
     styles = registry["styles"]
     if not isinstance(styles, list) or not styles:
         raise ValueError("style-registry.json.styles 必须是非空数组。")
@@ -244,8 +269,8 @@ def validate_registry(skill_root: Path) -> dict[str, Any]:
             raise ValueError(f"公开资产许可证必须为 MIT：{relative_path}")
         if entry["confirmed_by"] != "xhanzo-coder":
             raise ValueError(f"公开资产缺少确认人：{relative_path}")
-        if entry["confirmed_at"] != "2026-08-29":
-            raise ValueError(f"公开资产确认日期错误：{relative_path}")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", entry["confirmed_at"]) is None:
+            raise ValueError(f"公开资产确认日期格式错误：{relative_path}")
         expected_rights = (
             "inherited-public-redistribution"
             if entry["role"] == "derived_crop"
@@ -279,6 +304,12 @@ def validate_registry(skill_root: Path) -> dict[str, Any]:
     return {
         "valid": True,
         "style_count": len(results),
+        "active_style_count": sum(
+            result["lifecycle_status"] == "active" for result in results
+        ),
+        "candidate_style_count": sum(
+            result["lifecycle_status"] == "candidate" for result in results
+        ),
         "asset_count": len(actual_assets),
         "styles": results,
     }

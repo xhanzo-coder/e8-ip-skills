@@ -72,6 +72,7 @@ def main() -> None:
             "只分析、比较、审计或写方案",
             "首次风格发现",
             "catalog_primary_style",
+            "candidate",
         ],
         "完整工作流",
     )
@@ -106,6 +107,9 @@ def main() -> None:
             "采用推荐",
             "还不会开始生成",
             "不得来自另一套人物或画法",
+            "lifecycle_status: active",
+            "catalog_visible: true",
+            "`candidate` 和 `deprecated` 风格禁止进入目录",
         ],
         "风格目录",
     )

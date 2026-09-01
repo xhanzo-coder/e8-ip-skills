@@ -2,6 +2,7 @@
 id: soft-toy-chibi
 display_name: 软萌潮玩 Q 版
 aliases: [软萌潮玩, 生活潮玩Q版, 手账潮玩人物, Q版三视图, 潮玩角色设定]
+lifecycle_status: active
 transformation_policy: structural-redraw
 reference_maturity: multi-reference
 default_likeness: recognizable

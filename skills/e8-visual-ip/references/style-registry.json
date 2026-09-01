@@ -1,12 +1,14 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "registry_role": "内置风格路由与能力真源；风格细节以 definition 指向的文件为准。",
   "styles": [
     {
-      "schema_version": "1.1",
+      "schema_version": "1.2",
       "id": "soft-toy-chibi",
       "display_name": "软萌潮玩 Q 版",
       "aliases": ["软萌潮玩", "生活潮玩Q版", "手账潮玩人物", "Q版三视图", "潮玩角色设定"],
+      "lifecycle_status": "active",
+      "catalog_visible": true,
       "catalog_preview": "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
       "catalog_primary_style": "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
       "catalog_summary": "彩色、圆润、粗暖线条和紧凑玩偶比例，强调缩小后的亲和与识别。",
@@ -28,10 +30,12 @@
       "prompt_profiles": ["references/styles/soft-toy-profiles/minimal-face.md"]
     },
     {
-      "schema_version": "1.1",
+      "schema_version": "1.2",
       "id": "monochrome-manga-sheet",
       "display_name": "极简黑白漫画设定风",
       "aliases": ["黑白漫画人物", "极简黑白线稿", "黑白三视图", "漫画设定稿", "纯黑白人物"],
+      "lifecycle_status": "active",
+      "catalog_visible": true,
       "catalog_preview": "assets/style-references/monochrome-manga-sheet/reference.png",
       "catalog_primary_style": "assets/style-references/monochrome-manga-sheet/front-character.png",
       "catalog_summary": "纯黑白成品、克制线条和大量留白，以剪影与黑白面积保持身份。",
@@ -55,10 +59,12 @@
       "prompt_profiles": []
     },
     {
-      "schema_version": "1.1",
+      "schema_version": "1.2",
       "id": "streetwear-pixel-sheet",
       "display_name": "街头像素角色设定风",
       "aliases": ["街头像素人物", "像素个人IP", "像素三视图", "青年像素角色", "像素角色设定稿"],
+      "lifecycle_status": "active",
+      "catalog_visible": true,
       "catalog_preview": "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
       "catalog_primary_style": "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
       "catalog_summary": "有限色板、统一像素网格和街头服装体块，具有复古游戏角色感。",
@@ -79,6 +85,30 @@
       "supported_outputs": ["base-character", "turnaround", "avatar"],
       "unverified_outputs": ["expression", "action", "sticker", "outfit", "scene"],
       "run_validator": "scripts/validate_pixel_run.py",
+      "prompt_profiles": []
+    },
+    {
+      "schema_version": "1.2",
+      "id": "mint-ink-chibi",
+      "display_name": "薄荷墨线轻 Q 版",
+      "aliases": ["薄荷墨线", "森林绿线稿", "三色轻Q人物", "薄荷绿三视图", "极简绿墨人物"],
+      "lifecycle_status": "candidate",
+      "catalog_visible": false,
+      "catalog_preview": "assets/style-references/mint-ink-chibi/reference.png",
+      "catalog_primary_style": "assets/style-references/mint-ink-chibi/reference.png",
+      "catalog_summary": "暖白留白、森林绿墨线与薄荷强调色构成的三色轻 Q 角色设定风。",
+      "catalog_best_for": ["极简个人分身", "轻量头像", "正侧背人物设定"],
+      "transformation_policy": "structural-redraw",
+      "reference_maturity": "single-reference",
+      "default_likeness": "interpreted",
+      "definition": "references/styles/mint-ink-chibi.md",
+      "reference_assets": [
+        "assets/style-references/mint-ink-chibi/reference.png"
+      ],
+      "negative_examples": [],
+      "supported_outputs": [],
+      "unverified_outputs": ["base-character", "turnaround", "avatar", "expression", "action", "sticker", "outfit", "scene"],
+      "run_validator": "scripts/validate_mint_ink_run.py",
       "prompt_profiles": []
     }
   ]

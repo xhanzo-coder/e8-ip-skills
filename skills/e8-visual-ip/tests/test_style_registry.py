@@ -30,12 +30,21 @@ def main() -> None:
     payload = json.loads(result.stdout)
     if payload["valid"] is not True:
         raise AssertionError("风格注册表未通过校验。")
-    if payload["style_count"] != 3:
-        raise AssertionError(f"当前内置风格数量错误：{payload['style_count']}")
-    if payload["asset_count"] != 15:
+    if payload["style_count"] != 4:
+        raise AssertionError(f"当前注册风格数量错误：{payload['style_count']}")
+    if payload["active_style_count"] != 3:
+        raise AssertionError(f"当前正式风格数量错误：{payload['active_style_count']}")
+    if payload["candidate_style_count"] != 1:
+        raise AssertionError(f"当前候选风格数量错误：{payload['candidate_style_count']}")
+    if payload["asset_count"] != 16:
         raise AssertionError(f"当前已登记风格资产数量错误：{payload['asset_count']}")
     style_ids = [entry["id"] for entry in payload["styles"]]
-    if style_ids != ["soft-toy-chibi", "monochrome-manga-sheet", "streetwear-pixel-sheet"]:
+    if style_ids != [
+        "soft-toy-chibi",
+        "monochrome-manga-sheet",
+        "streetwear-pixel-sheet",
+        "mint-ink-chibi",
+    ]:
         raise AssertionError(f"风格注册顺序或标识错误：{style_ids}")
     expected_catalog_pairs = {
         "soft-toy-chibi": (
@@ -50,6 +59,10 @@ def main() -> None:
             "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
             "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
         ),
+        "mint-ink-chibi": (
+            "assets/style-references/mint-ink-chibi/reference.png",
+            "assets/style-references/mint-ink-chibi/reference.png",
+        ),
     }
     observed_catalog_pairs = {
         entry["id"]: (entry["catalog_preview"], entry["catalog_primary_style"])
@@ -57,6 +70,11 @@ def main() -> None:
     }
     if observed_catalog_pairs != expected_catalog_pairs:
         raise AssertionError(f"风格目录预览或默认主参考错误：{observed_catalog_pairs}")
+    mint = next(entry for entry in payload["styles"] if entry["id"] == "mint-ink-chibi")
+    if mint["lifecycle_status"] != "candidate" or mint["catalog_visible"] is not False:
+        raise AssertionError("薄荷墨线风格必须保持候选且不进入正式目录。")
+    if mint["supported_output_count"] != 0:
+        raise AssertionError("候选风格不得提前登记稳定产物。")
     print("test_style_registry: PASS")
 
 

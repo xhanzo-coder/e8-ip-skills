@@ -2,6 +2,7 @@
 id: monochrome-manga-sheet
 display_name: 极简黑白漫画设定风
 aliases: [黑白漫画人物, 极简黑白线稿, 黑白三视图, 漫画设定稿, 纯黑白人物]
+lifecycle_status: active
 transformation_policy: structural-redraw
 reference_maturity: single-reference
 default_likeness: recognizable

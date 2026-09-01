@@ -1,6 +1,6 @@
 # 内置风格目录
 
-本目录用于首次风格发现，不替代风格定义。所有信息从 `style-registry.json` 读取；注册表顺序就是用户看到的编号。
+本目录用于首次风格发现，不替代风格定义。所有信息从 `style-registry.json` 读取；只展示同时满足 `lifecycle_status: active` 与 `catalog_visible: true` 的条目，过滤后的注册表顺序就是用户看到的编号。
 
 ## 展示条件
 
@@ -14,6 +14,8 @@
 
 逐个读取注册表条目的：
 
+- `lifecycle_status`
+- `catalog_visible`
 - `display_name`
 - `catalog_preview`
 - `catalog_primary_style`
@@ -23,6 +25,8 @@
 - `unverified_outputs`
 
 使用当前环境的图片查看或展示能力真实展示 `catalog_preview`。若环境不能显示本地图片，必须明确说明预览不可见，并提供风格名称、摘要和相对路径；不得声称用户已经看过图片。
+
+`candidate` 和 `deprecated` 风格禁止进入目录、编号和自动推荐；只有用户明确点名候选风格并要求校准时，才能进入对应候选工作流。
 
 每个风格使用以下短卡片：
 

@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "reviewed_at": "2026-08-29",
+  "reviewed_at": "2026-08-31",
   "default_rights_status": "owner-confirmed-public-redistribution",
   "distribution_policy": "repository-mit",
   "confirmation_source": "repository owner explicit confirmation",
-  "notes": "仓库所有者于 2026-08-29 明确确认以下 15 张图片均可公开再分发，并同意随仓库按 MIT License 发布；衍生裁图继承来源图片的许可。",
+  "notes": "仓库所有者分别于 2026-08-29 和 2026-08-31 明确确认以下图片均可公开再分发，并同意随仓库按 MIT License 发布；衍生裁图继承来源图片的许可。",
   "assets": [
     {"path": "assets/style-references/soft-toy-chibi/accessory-led-sheet.png", "role": "style_reference", "source_class": "user-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "7cddaaefa04ed528bc18e2ede7b5e1d231250fab312998eba37ab634a9488fad"},
     {"path": "assets/style-references/soft-toy-chibi/expressive-eye-sheet.png", "role": "style_reference", "source_class": "user-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "0aae893bcef5758be1987b55c04eb3fbf0878aec959a6003b62e12b2445f3bfc"},
@@ -13,6 +13,7 @@
     {"path": "assets/style-references/monochrome-manga-sheet/reference.png", "role": "style_reference", "source_class": "user-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "093a5c9b844ce12ad53feca28e1b411631f3f4fd9f32e258884b2c0c00517a4a"},
     {"path": "assets/style-references/monochrome-manga-sheet/front-character.png", "role": "derived_crop", "source_class": "package-derived", "derived_from": "assets/style-references/monochrome-manga-sheet/reference.png", "rights_status": "inherited-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "e8304fa1bcb81724ac0a78261b0329cc09b4b44ef19ab8224615acad093def4b"},
     {"path": "assets/style-references/monochrome-manga-sheet/face-hair-detail.png", "role": "derived_crop", "source_class": "package-derived", "derived_from": "assets/style-references/monochrome-manga-sheet/reference.png", "rights_status": "inherited-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "db660e388e9833bffba7b0010a9a48f191e2bfe79d7f79c8a5cc42391b0b6c5a"},
+    {"path": "assets/style-references/mint-ink-chibi/reference.png", "role": "style_reference", "source_class": "user-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-31", "sha256": "14b631704d6e5d20787c653b5c3a460678bfee9afd14e96141aa31b687055422"},
     {"path": "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-body-long.png", "role": "negative_qa_fixture", "source_class": "project-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "313b22d7ad5cc241fda7d31ad3d12139a6b4e0a7d0527a07ac8c96e679729d36"},
     {"path": "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-head-large.png", "role": "negative_qa_fixture", "source_class": "project-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "211ef19482c8ece631b4dc4b0afa657310e762e71ca6a42b9abebb5b2c54e480"},
     {"path": "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png", "role": "style_reference", "source_class": "user-curated", "rights_status": "owner-confirmed-public-redistribution", "license": "MIT", "confirmed_by": "xhanzo-coder", "confirmed_at": "2026-08-29", "sha256": "2f765632526d3e4e9687bcf1a71722d448f7bd1d92b010b441102a33d01dd184"},

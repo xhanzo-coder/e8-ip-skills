@@ -2,6 +2,7 @@
 id: streetwear-pixel-sheet
 display_name: 街头像素角色设定风
 aliases: [像素个人IP, 街头像素人物, 像素三视图, 暗色像素角色, 像素角色设定]
+lifecycle_status: active
 transformation_policy: structural-redraw
 reference_maturity: limited-multi-reference
 default_likeness: interpreted
