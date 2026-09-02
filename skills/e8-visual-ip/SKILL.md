@@ -48,7 +48,7 @@ description: 设计、生成、修改、审计和复用可持续使用的个人�
 
 当前候选风格：
 
-- [薄荷墨线轻 Q 版](references/styles/mint-ink-chibi.md)：`mint-ink-chibi`，`candidate + single-reference`；不进入正式目录，不自动推荐，只允许显式校准。
+- [黑灰墨线轻 Q 版](references/styles/charcoal-ink-chibi.md)：`charcoal-ink-chibi`，`candidate + single-reference`；不进入正式目录，不自动推荐，只允许显式校准。
 
 ## 执行骨架
 
@@ -61,7 +61,7 @@ description: 设计、生成、修改、审计和复用可持续使用的个人�
 7. 获得本阶段所需确认后，建立独立运行目录，保存计划和完整 Prompt；按 [Prompt 组装](references/workflows/prompt-assembly.md) 校验计划、Prompt 与工具输入使用同一组参考。
 8. 优先使用用户指定的图片工具，否则使用当前环境原生栅格生图能力；Codex 中使用 `imagegen`。没有栅格工具时说明限制，不用 SVG、HTML、Canvas 或代码绘图代替。
 9. 每轮只生成一张当前阶段候选。基础人物生成一张可直接确认的正面全身母图；新增风格生成一张正面校准样张。通过人物身份、风格语法、当前任务三层 QA 并获得用户确认后，才扩展侧面、背面或批量衍生；失败时停止并报告根因，不自动生成第二张。
-10. 执行注册表声明的专属运行校验器。黑白、像素及候选薄荷墨线正面母图必须在烧图前通过 `--phase pre`，生成后通过 `--phase post`；任一硬门失败即拒绝。
+10. 执行注册表声明的专属运行校验器。黑白、像素及候选黑灰墨线正面母图必须在烧图前通过 `--phase pre`，生成后通过 `--phase post`；任一硬门失败即拒绝。
 11. 交付候选、差异判断和一个明确确认问题。只有用户正式确认人物或风格后，才用 `scripts/character_pack.py` 保存或更新共享角色包。
 
 ## 输出与副作用

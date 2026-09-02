@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate one mint-ink-chibi candidate calibration run before and after generation."""
+"""Validate one charcoal-ink-chibi candidate calibration run before and after generation."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from typing import Any
 
 
 SCHEMA_VERSION = "1.0"
-STYLE_ID = "mint-ink-chibi"
+STYLE_ID = "charcoal-ink-chibi"
 IDENTITY_ANCHOR_IDS = (
     "identity_face_proportion",
     "identity_hairline_silhouette",
@@ -19,20 +19,20 @@ IDENTITY_ANCHOR_IDS = (
     "identity_age_mood",
 )
 STYLE_ANCHOR_IDS = (
-    "mint_anchor_1_compact_ratio",
-    "mint_anchor_2_head_limb_contrast",
-    "mint_anchor_3_forest_line_hierarchy",
-    "mint_anchor_4_three_color_limit",
-    "mint_anchor_5_negative_space_hair",
-    "mint_anchor_6_minimal_face",
-    "mint_anchor_7_large_garment_blocks",
-    "mint_anchor_8_clean_presentation",
+    "charcoal_anchor_1_compact_ratio",
+    "charcoal_anchor_2_head_limb_contrast",
+    "charcoal_anchor_3_black_line_hierarchy",
+    "charcoal_anchor_4_achromatic_palette",
+    "charcoal_anchor_5_solid_black_hair",
+    "charcoal_anchor_6_minimal_face",
+    "charcoal_anchor_7_large_garment_blocks",
+    "charcoal_anchor_8_clean_presentation",
 )
 PROMPT_CONTRACT_KEYS = {
     "compact_ratio",
-    "forest_line_hierarchy",
-    "three_color_limit",
-    "negative_space_hair",
+    "black_line_hierarchy",
+    "achromatic_palette",
+    "solid_black_hair",
     "minimal_face_grammar",
     "large_garment_blocks",
     "no_shading_or_texture",
@@ -128,7 +128,7 @@ def validate_common(run_dir: Path, contract: dict[str, Any]) -> None:
     if contract["style_id"] != STYLE_ID:
         raise ValueError(f"style_id 必须为 {STYLE_ID}。")
     if contract["lifecycle_status"] != "candidate":
-        raise ValueError("薄荷墨线校准期间 lifecycle_status 必须为 candidate。")
+        raise ValueError("黑灰墨线校准期间 lifecycle_status 必须为 candidate。")
     if contract["task"] != "base-character":
         raise ValueError("当前契约只允许首次正面 base-character 校准。")
     if contract["reference_maturity"] != "single-reference":
@@ -152,8 +152,8 @@ def validate_common(run_dir: Path, contract: dict[str, Any]) -> None:
 
     primary = require_string(contract["primary_style_reference"], "primary_style_reference")
     primary_path = resolve_file(run_dir, primary, "primary_style_reference")
-    if primary_path.name != "reference.png" or "mint-ink-chibi" not in primary_path.parts:
-        raise ValueError("主风格参考必须是登记的 mint-ink-chibi/reference.png。")
+    if primary_path.name != "reference.png" or "charcoal-ink-chibi" not in primary_path.parts:
+        raise ValueError("主风格参考必须是登记的 charcoal-ink-chibi/reference.png。")
 
     reference_order = require_string_list(
         contract["reference_order"],
@@ -252,7 +252,7 @@ def validate_post(run_dir: Path, contract: dict[str, Any]) -> None:
 
 
 def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="校验薄荷墨线候选正面人物运行。")
+    parser = argparse.ArgumentParser(description="校验黑灰墨线候选正面人物运行。")
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--phase", choices=("pre", "post"), required=True)
     return parser.parse_args()
@@ -272,7 +272,7 @@ def main() -> None:
         validate_pre(contract)
     else:
         validate_post(run_dir, contract)
-    print(f"validate_mint_ink_run:{arguments.phase}: PASS")
+    print(f"validate_charcoal_ink_run:{arguments.phase}: PASS")
 
 
 if __name__ == "__main__":

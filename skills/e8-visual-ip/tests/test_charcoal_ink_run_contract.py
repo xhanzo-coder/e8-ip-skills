@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression test for the mint-ink-chibi candidate run contract."""
+"""Regression test for the charcoal-ink-chibi candidate run contract."""
 
 from __future__ import annotations
 
@@ -13,9 +13,9 @@ from pathlib import Path
 
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
-VALIDATOR = SKILL_ROOT / "scripts" / "validate_mint_ink_run.py"
+VALIDATOR = SKILL_ROOT / "scripts" / "validate_charcoal_ink_run.py"
 STYLE_REFERENCE = (
-    SKILL_ROOT / "assets" / "style-references" / "mint-ink-chibi" / "reference.png"
+    SKILL_ROOT / "assets" / "style-references" / "charcoal-ink-chibi" / "reference.png"
 )
 PNG_1X1 = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z4QAAAABJRU5ErkJggg=="
@@ -28,20 +28,20 @@ IDENTITY_IDS = (
     "identity_age_mood",
 )
 STYLE_IDS = (
-    "mint_anchor_1_compact_ratio",
-    "mint_anchor_2_head_limb_contrast",
-    "mint_anchor_3_forest_line_hierarchy",
-    "mint_anchor_4_three_color_limit",
-    "mint_anchor_5_negative_space_hair",
-    "mint_anchor_6_minimal_face",
-    "mint_anchor_7_large_garment_blocks",
-    "mint_anchor_8_clean_presentation",
+    "charcoal_anchor_1_compact_ratio",
+    "charcoal_anchor_2_head_limb_contrast",
+    "charcoal_anchor_3_black_line_hierarchy",
+    "charcoal_anchor_4_achromatic_palette",
+    "charcoal_anchor_5_solid_black_hair",
+    "charcoal_anchor_6_minimal_face",
+    "charcoal_anchor_7_large_garment_blocks",
+    "charcoal_anchor_8_clean_presentation",
 )
 PROMPT_KEYS = (
     "compact_ratio",
-    "forest_line_hierarchy",
-    "three_color_limit",
-    "negative_space_hair",
+    "black_line_hierarchy",
+    "achromatic_palette",
+    "solid_black_hair",
     "minimal_face_grammar",
     "large_garment_blocks",
     "no_shading_or_texture",
@@ -80,7 +80,7 @@ def make_contract(identity: Path, prompt: Path) -> dict[str, object]:
     identity_path = str(identity)
     return {
         "schema_version": "1.0",
-        "style_id": "mint-ink-chibi",
+        "style_id": "charcoal-ink-chibi",
         "lifecycle_status": "candidate",
         "task": "base-character",
         "reference_maturity": "single-reference",
@@ -110,7 +110,7 @@ def main() -> None:
     if not STYLE_REFERENCE.is_file():
         raise FileNotFoundError(f"Missing style reference: {STYLE_REFERENCE}")
 
-    with tempfile.TemporaryDirectory(prefix="e8-mint-ink-contract-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="e8-charcoal-ink-contract-") as temporary:
         run_dir = Path(temporary)
         identity = run_dir / "identity.png"
         candidate = run_dir / "candidate.png"
@@ -119,7 +119,7 @@ def main() -> None:
         identity.write_bytes(PNG_1X1)
         write_text(run_dir / "analysis.md", "# Analysis\n")
         write_text(run_dir / "plan.md", "# Plan\n")
-        write_text(prompt, "# Mint ink prompt\n")
+        write_text(prompt, "# Charcoal ink prompt\n")
 
         contract = make_contract(identity, prompt)
         write_json(run_dir / "run-contract.json", contract)
@@ -154,7 +154,7 @@ def main() -> None:
 
         rejected = approved.copy()
         rejected["style_anchors"] = {
-            key: "FAIL" if key == "mint_anchor_4_three_color_limit" else "PASS"
+            key: "FAIL" if key == "charcoal_anchor_4_achromatic_palette" else "PASS"
             for key in STYLE_IDS
         }
         rejected["style_status"] = "FAIL"
@@ -176,7 +176,7 @@ def main() -> None:
         write_json(run_dir / "run-contract.json", rejected)
         run_validator(run_dir, "post", expect_success=True)
 
-    print("test_mint_ink_run_contract: PASS")
+    print("test_charcoal_ink_run_contract: PASS")
 
 
 if __name__ == "__main__":

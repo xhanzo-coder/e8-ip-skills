@@ -1,6 +1,6 @@
 # 触发评测摘要
 
-评测日期：2026-09-01
+评测日期：2026-09-02
 阈值：`0.13`
 评测器：Yao `trigger_eval.py`，使用本 Skill 的 `evals/semantic_config.json`。
 

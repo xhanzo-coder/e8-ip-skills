@@ -43,7 +43,7 @@ def main() -> None:
         "soft-toy-chibi",
         "monochrome-manga-sheet",
         "streetwear-pixel-sheet",
-        "mint-ink-chibi",
+        "charcoal-ink-chibi",
     ]:
         raise AssertionError(f"风格注册顺序或标识错误：{style_ids}")
     expected_catalog_pairs = {
@@ -59,9 +59,9 @@ def main() -> None:
             "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
             "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
         ),
-        "mint-ink-chibi": (
-            "assets/style-references/mint-ink-chibi/reference.png",
-            "assets/style-references/mint-ink-chibi/reference.png",
+        "charcoal-ink-chibi": (
+            "assets/style-references/charcoal-ink-chibi/reference.png",
+            "assets/style-references/charcoal-ink-chibi/reference.png",
         ),
     }
     observed_catalog_pairs = {
@@ -70,10 +70,12 @@ def main() -> None:
     }
     if observed_catalog_pairs != expected_catalog_pairs:
         raise AssertionError(f"风格目录预览或默认主参考错误：{observed_catalog_pairs}")
-    mint = next(entry for entry in payload["styles"] if entry["id"] == "mint-ink-chibi")
-    if mint["lifecycle_status"] != "candidate" or mint["catalog_visible"] is not False:
-        raise AssertionError("薄荷墨线风格必须保持候选且不进入正式目录。")
-    if mint["supported_output_count"] != 0:
+    charcoal = next(
+        entry for entry in payload["styles"] if entry["id"] == "charcoal-ink-chibi"
+    )
+    if charcoal["lifecycle_status"] != "candidate" or charcoal["catalog_visible"] is not False:
+        raise AssertionError("黑灰墨线风格必须保持候选且不进入正式目录。")
+    if charcoal["supported_output_count"] != 0:
         raise AssertionError("候选风格不得提前登记稳定产物。")
     print("test_style_registry: PASS")
 

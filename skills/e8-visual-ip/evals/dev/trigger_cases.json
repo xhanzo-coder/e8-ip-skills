@@ -28,7 +28,7 @@
     {"text": "我上传了一套马克笔人物参考，帮正式角色增加这种自定义风格。", "family": "custom_style"},
     {"text": "帮我检查这几张图是不是同一个角色，身份和风格有没有漂。", "family": "consistency_audit"},
     {"text": "先分析我的照片适合保留哪些人物特征，不要生成图片。", "family": "analysis_only"},
-    {"text": "我想显式测试候选的薄荷墨线轻Q版，先做一张正面校准，不要加入正式目录。", "family": "mint_candidate_calibration"}
+    {"text": "我想显式测试候选的黑灰墨线轻Q版，先做一张正面校准，不要加入正式目录。", "family": "charcoal_candidate_calibration"}
   ],
   "should_not_trigger": [
     {"text": "帮我做个人IP定位和商业变现规划。", "family": "brand_strategy"},

@@ -118,7 +118,7 @@ def main() -> None:
         "soft-toy-chibi.md",
         "monochrome-manga-sheet.md",
         "streetwear-pixel-sheet.md",
-        "mint-ink-chibi.md",
+        "charcoal-ink-chibi.md",
     }
     if style_files != expected_style_files:
         raise AssertionError(
@@ -135,7 +135,7 @@ def main() -> None:
         "soft-toy-chibi",
         "monochrome-manga-sheet",
         "streetwear-pixel-sheet",
-        "mint-ink-chibi",
+        "charcoal-ink-chibi",
     }
     if asset_directories != expected_asset_directories:
         raise AssertionError(
