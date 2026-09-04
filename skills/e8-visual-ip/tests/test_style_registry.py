@@ -32,12 +32,13 @@ def main() -> None:
         raise AssertionError("风格注册表未通过校验。")
     if payload["style_count"] != 4:
         raise AssertionError(f"当前注册风格数量错误：{payload['style_count']}")
-    if payload["active_style_count"] != 2:
+    if payload["active_style_count"] != 3:
         raise AssertionError(f"当前正式风格数量错误：{payload['active_style_count']}")
-    if payload["candidate_style_count"] != 2:
+    if payload["candidate_style_count"] != 1:
         raise AssertionError(f"当前候选风格数量错误：{payload['candidate_style_count']}")
     if payload["asset_count"] != 12:
         raise AssertionError(f"当前已登记风格资产数量错误：{payload['asset_count']}")
+
     style_ids = [entry["id"] for entry in payload["styles"]]
     if style_ids != [
         "soft-toy-chibi",
@@ -46,6 +47,7 @@ def main() -> None:
         "charcoal-ink-chibi",
     ]:
         raise AssertionError(f"风格注册顺序或标识错误：{style_ids}")
+
     expected_catalog_pairs = {
         "soft-toy-chibi": (
             "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
@@ -56,8 +58,8 @@ def main() -> None:
             "assets/style-references/monochrome-manga-sheet/front-character.png",
         ),
         "streetwear-pixel-sheet": (
-            "assets/style-references/streetwear-pixel-sheet/glasses-cyan.png",
-            "assets/style-references/streetwear-pixel-sheet/glasses-cyan.png",
+            "assets/style-references/streetwear-pixel-sheet/reference-01.png",
+            "assets/style-references/streetwear-pixel-sheet/reference-01.png",
         ),
         "charcoal-ink-chibi": (
             "assets/style-references/charcoal-ink-chibi/reference.png",
@@ -70,13 +72,19 @@ def main() -> None:
     }
     if observed_catalog_pairs != expected_catalog_pairs:
         raise AssertionError(f"风格目录预览或默认主参考错误：{observed_catalog_pairs}")
-    charcoal = next(
-        entry for entry in payload["styles"] if entry["id"] == "charcoal-ink-chibi"
-    )
+
+    pixel = next(entry for entry in payload["styles"] if entry["id"] == "streetwear-pixel-sheet")
+    if pixel["lifecycle_status"] != "active" or pixel["catalog_visible"] is not True:
+        raise AssertionError("像素角色设定风必须保持正式且在风格目录可见。")
+    if pixel["supported_output_count"] != 3:
+        raise AssertionError("像素角色设定风必须保留基础人物、头像和三视图能力。")
+
+    charcoal = next(entry for entry in payload["styles"] if entry["id"] == "charcoal-ink-chibi")
     if charcoal["lifecycle_status"] != "candidate" or charcoal["catalog_visible"] is not False:
         raise AssertionError("黑灰墨线风格必须保持候选且不进入正式目录。")
     if charcoal["supported_output_count"] != 0:
         raise AssertionError("候选风格不得提前登记稳定产物。")
+
     print("test_style_registry: PASS")
 
 

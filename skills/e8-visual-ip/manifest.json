@@ -1,8 +1,8 @@
 {
   "name": "e8-visual-ip",
-  "version": "2.3.0-candidate.1",
+  "version": "2.3.0",
   "owner": "E8 Skill Maintainers",
-  "updated_at": "2026-08-28",
+  "updated_at": "2026-09-04",
   "review_due": "2026-11-27",
   "review_cadence": "quarterly",
   "status": "active",

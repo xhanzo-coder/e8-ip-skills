@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""校验街头像素正面人物运行在生成前后是否满足硬契约。"""
+"""校验像素角色正面人物运行在生成前后是否满足硬契约。"""
 
 from __future__ import annotations
 
@@ -14,17 +14,19 @@ CONTRACT_NAME = "run-contract.json"
 STYLE_ID = "streetwear-pixel-sheet"
 SCHEMA_VERSION = "1.0"
 ROUTE_FILES = {
-    "glasses-cyan": "glasses-cyan.png",
-    "long-hair-gold": "long-hair-gold.png",
+    "generic-pixel": {
+        "primary": "reference-01.png",
+        "secondary": "reference-02.png",
+    },
 }
 ANCHOR_IDS = (
     "pixel_anchor_1_uniform_grid",
-    "pixel_anchor_2_dark_palette",
-    "pixel_anchor_3_compact_youth_proportion",
+    "pixel_anchor_2_limited_palette",
+    "pixel_anchor_3_youth_proportion",
     "pixel_anchor_4_hair_clusters",
     "pixel_anchor_5_simple_face",
-    "pixel_anchor_6_streetwear_volume",
-    "pixel_anchor_7_single_accent",
+    "pixel_anchor_6_clothing_blocks",
+    "pixel_anchor_7_identity_adaptation",
     "pixel_anchor_8_clean_fullbody",
 )
 REQUIRED_KEYS = {
@@ -131,7 +133,7 @@ def validate_common(run_dir: Path, contract: dict[str, Any]) -> None:
     route = require_string(contract["route"], "route")
     if route not in ROUTE_FILES:
         raise ValueError(f"route 必须是：{sorted(ROUTE_FILES)}")
-    route_file = ROUTE_FILES[route]
+    route_files = ROUTE_FILES[route]
 
     identities = require_string_list(
         contract["identity_references"], "identity_references", allow_empty=False
@@ -147,14 +149,15 @@ def validate_common(run_dir: Path, contract: dict[str, Any]) -> None:
     )
     full_sheet = require_string(contract["full_sheet_reference"], "full_sheet_reference")
 
-    if secondary:
-        raise ValueError("新像素参考不使用辅助裁图；secondary_style_references 必须为空。")
-    if reference_order != [primary, *identities]:
-        raise ValueError(
-            "reference_order 必须严格为：所选完整像素参考、全部身份图。"
-        )
-    if Path(primary).name != route_file:
-        raise ValueError(f"route={route} 的主参考必须是 {route_file}。")
+    if len(secondary) > 1:
+        raise ValueError("secondary_style_references 最多一张。")
+    if reference_order != [primary, *identities, *secondary]:
+        raise ValueError("reference_order 必须严格为：主风格参考、全部身份图、可选辅助风格参考。")
+    if Path(primary).name != route_files["primary"]:
+        raise ValueError(f"主参考必须是 {route_files['primary']}。")
+    for path in secondary:
+        if Path(path).name != route_files["secondary"]:
+            raise ValueError(f"辅助参考只能是 {route_files['secondary']}。")
     if contract["full_sheet_passed_to_generation"] is not True:
         raise ValueError("新参考是完整正面图，必须真实传入生成工具。")
 
@@ -162,7 +165,7 @@ def validate_common(run_dir: Path, contract: dict[str, Any]) -> None:
     for index, identity in enumerate(identities):
         resolve_existing_file(run_dir, identity, f"identity_references[{index}]")
     resolved_sheet = resolve_existing_file(run_dir, full_sheet, "full_sheet_reference")
-    if resolved_sheet.name != route_file or resolved_sheet != Path(primary).resolve():
+    if resolved_sheet.name != route_files["primary"] or resolved_sheet != Path(primary).resolve():
         raise ValueError("full_sheet_reference 必须与当前完整正面主参考相同。")
     resolve_existing_file(
         run_dir,

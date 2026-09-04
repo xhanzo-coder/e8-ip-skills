@@ -9,8 +9,8 @@ Preset 是风格已经由用户选择或明确委托 Skill 代选之后，组合
 | `symbolic-toy` | `symbolic-mascot` | `symbolic` | `soft-toy-chibi` | 单主色＋固定强调色载体 | 保留人物结构的符号化潮玩吉祥物 |
 | `interpreted-mono` | `recognizable-chibi` | `interpreted` | `monochrome-manga-sheet` | 身份色转译为黑白形状与固定载体 | 已选择黑白漫画后的个人分身、角色设定稿和三视图 |
 | `graphic-mono` | `graphic-chibi` | `interpreted` | `monochrome-manga-sheet` | 强化实心黑块与白色负空间 | 更符号化的黑白漫画角色、头像和贴纸 |
-| `interpreted-pixel` | `recognizable-chibi` | `interpreted` | `streetwear-pixel-sheet` | 暗色主体＋一个身份强调色 | 候选像素风的单张正面校准，不代表三视图可用 |
-| `graphic-pixel` | `graphic-chibi` | `interpreted` | `streetwear-pixel-sheet` | 强化像素剪影和有限色板 | 更符号化的像素角色、头像和游戏式立绘 |
+| `interpreted-pixel` | `recognizable-chibi` | `interpreted` | `streetwear-pixel-sheet` | 从人物身份色中整理有限色板 | 可辨认的像素个人分身、头像和三视图 |
+| `graphic-pixel` | `graphic-chibi` | `interpreted` | `streetwear-pixel-sheet` | 强化像素剪影并压缩为有限色板 | 更符号化的像素角色、头像和游戏式立绘 |
 
 ## 覆盖例子
 
@@ -20,8 +20,7 @@ Preset 是风格已经由用户选择或明确委托 Skill 代选之后，组合
 - 用户上传朴素正装照但未指定风格 → 先展示风格目录；选择软萌潮玩后可使用 `recognizable-toy`。正装只提供待判断气质，不自动复制服装。
 - 用户明确要最终纯黑白漫画人物或黑白三视图 → `interpreted-mono`；用户要求更像本人时只把相似度提升到 `recognizable`。
 - 用户要更抽象的黑白角色、强调剪影与负空间 → `graphic-mono`。
-- 用户明确要像素人物或暗色街头角色 → 说明当前为隐藏候选，只能先用 `interpreted-pixel` 做单张正面校准。
-- 用户要更符号化的像素角色或强调游戏角色感 → `graphic-pixel`。
-- 用户提供一套与软萌潮玩明显不同的新参考图 → 不套用本表，进入自定义风格候选流程。
+- 用户明确要像素人物 → 根据所需辨识度选择 `interpreted-pixel` 或 `graphic-pixel`；配色、服装和人物特征均来自用户，不从参考图固定继承。
+- 用户提供一套与三个内置风格明显不同的新参考图 → 不套用本表，进入自定义风格候选流程。
 
 Preset 是推荐入口，不是确认结果。正式人物和新增自定义风格仍需用户明确确认。

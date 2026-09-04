@@ -25,17 +25,20 @@ def main() -> None:
     workflow = read_utf8("references/workflows/workflow.md")
     quality = read_utf8("references/quality-checklist.md")
     palette = read_utf8("references/dimensions/palette.md")
+    run_contract = read_utf8("references/workflows/pixel-run-contract.md")
 
     require_fragments(
         style,
         [
+            "display_name: 像素角色设定风",
+            "lifecycle_status: active",
             "reference_maturity: limited-multi-reference",
             "default_likeness: interpreted",
-            "glasses_cyan:",
-            "long_hair_gold:",
+            "reference_01:",
+            "reference_02:",
             "统一方形像素网格",
-            "只能选择一个",
-            "不进入正式目录",
+            "不定义用户必须具有的发型、眼镜、耳饰、服装、性别或配色",
+            "pixel_anchor_6_clothing_blocks",
             "高清插画套马赛克",
         ],
         "streetwear-pixel-sheet.md",
@@ -44,8 +47,8 @@ def main() -> None:
         skill,
         [
             "streetwear-pixel-sheet",
-            "暗黑街头像素角色风",
-            "两张新参考待重新验证",
+            "像素角色设定风",
+            "两张合规参考只提供像素画法",
             "专属运行校验器",
         ],
         "SKILL.md",
@@ -54,54 +57,43 @@ def main() -> None:
         auto_selection,
         [
             "像素人物、像素三视图",
-            "`streetwear-pixel-sheet` 内部参考路由",
+            "`streetwear-pixel-sheet` 参考使用",
+            "不按长短发、眼镜、耳饰、性别或服装自动分流",
         ],
         "auto-selection.md",
     )
     require_fragments(
-        prompt_assembly,
+        run_contract,
         [
-            "style-registry.json",
-            "[primary identity]",
-            "[primary style]",
-            "reference_maturity",
+            "route` 固定为 `generic-pixel`",
+            "不得根据用户的外貌或穿搭拆分路线",
+            "发型、眼镜、耳饰、服装和配色必须来自用户照片、文字信息与已确认方案",
         ],
+        "pixel-run-contract.md",
+    )
+    require_fragments(
+        prompt_assembly,
+        ["style-registry.json", "[primary identity]", "[primary style]", "reference_maturity"],
         "prompt-assembly.md",
     )
     require_fragments(
         workflow,
-        [
-            "run_validator",
-            "reference_maturity",
-            "--phase pre",
-            "--phase post",
-        ],
+        ["run_validator", "reference_maturity", "--phase pre", "--phase post"],
         "workflow.md",
     )
     require_fragments(
         quality,
-        [
-            "生成后硬门",
-            "负面 QA 样本",
-            "风格硬门：PASS / FAIL",
-            "运行契约",
-        ],
+        ["生成后硬门", "负面 QA 样本", "风格硬门：PASS / FAIL", "运行契约"],
         "quality-checklist.md",
     )
     require_fragments(
         palette,
-        [
-            "`streetwear-pixel-sheet`",
-            "16～28个有意义颜色",
-        ],
+        ["`streetwear-pixel-sheet`", "16～28个有意义颜色"],
         "palette.md",
     )
 
     reference_dir = SKILL_ROOT / "assets/style-references/streetwear-pixel-sheet"
-    expected_assets = {
-        "glasses-cyan.png",
-        "long-hair-gold.png",
-    }
+    expected_assets = {"reference-01.png", "reference-02.png"}
     actual_assets = {path.name for path in reference_dir.iterdir() if path.is_file()}
     if actual_assets != expected_assets:
         raise AssertionError(
@@ -122,15 +114,15 @@ def main() -> None:
     }
     required_cases = {
         "pixel_create",
-        "pixel_route_glasses_cyan",
-        "pixel_route_long_hair_gold",
-        "pixel_turnaround_unverified",
+        "pixel_reference_isolation",
+        "pixel_identity_adaptation",
+        "pixel_turnaround",
         "pixel_audit",
         "pixel_contamination",
     }
     missing_cases = required_cases - case_families
     if missing_cases:
-        raise AssertionError(f"缺少街头像素回归用例：{sorted(missing_cases)}")
+        raise AssertionError(f"缺少像素风回归用例：{sorted(missing_cases)}")
 
     print("validate_pixel_contract: PASS")
 

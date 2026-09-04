@@ -44,10 +44,10 @@ description: 设计、生成、修改、审计和复用可持续使用的个人�
 
 - [软萌潮玩 Q 版](references/styles/soft-toy-chibi.md)：`soft-toy-chibi`，多参考校准。
 - [极简黑白漫画设定风](references/styles/monochrome-manga-sheet.md)：`monochrome-manga-sheet`，`single-reference`。
+- [像素角色设定风](references/styles/streetwear-pixel-sheet.md)：`streetwear-pixel-sheet`，两张合规参考只提供像素画法，不固定人物特征、服装或配色。
 
 当前候选风格：
 
-- [暗黑街头像素角色风](references/styles/streetwear-pixel-sheet.md)：`streetwear-pixel-sheet`，两张新参考待重新验证；不进入正式目录。
 - [黑灰墨线轻 Q 版](references/styles/charcoal-ink-chibi.md)：`charcoal-ink-chibi`，`candidate + single-reference`；不进入正式目录，不自动推荐，只允许显式校准。
 
 ## 执行骨架

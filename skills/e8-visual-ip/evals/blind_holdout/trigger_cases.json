@@ -5,7 +5,7 @@
     {"text": "眼睛和发型在不同图片里总变化，能检查这个角色包为什么不稳定吗？", "family": "package_consistency"},
     {"text": "请用我的正式人物做一个挥手动作，保持原来的潮玩比例。", "family": "action_derivative"},
     {"text": "这套参考画法不错，先帮我的人物试一张候选，确认后再保存成新风格。", "family": "custom_style_gate"},
-    {"text": "把这张职业照重构成街头像素个人角色，不要照搬西装和背景。", "family": "pixel_formal_photo"},
+    {"text": "把这张职业照重构成像素个人角色，不要照搬西装和背景。", "family": "pixel_formal_photo"},
     {"text": "黑白人物复制了参考图的眼镜和咖啡杯，请修掉参考污染。", "family": "reference_contamination"}
   ],
   "should_not_trigger": [
