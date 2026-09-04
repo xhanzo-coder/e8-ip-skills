@@ -32,11 +32,11 @@ def main() -> None:
         raise AssertionError("风格注册表未通过校验。")
     if payload["style_count"] != 4:
         raise AssertionError(f"当前注册风格数量错误：{payload['style_count']}")
-    if payload["active_style_count"] != 3:
+    if payload["active_style_count"] != 2:
         raise AssertionError(f"当前正式风格数量错误：{payload['active_style_count']}")
-    if payload["candidate_style_count"] != 1:
+    if payload["candidate_style_count"] != 2:
         raise AssertionError(f"当前候选风格数量错误：{payload['candidate_style_count']}")
-    if payload["asset_count"] != 16:
+    if payload["asset_count"] != 12:
         raise AssertionError(f"当前已登记风格资产数量错误：{payload['asset_count']}")
     style_ids = [entry["id"] for entry in payload["styles"]]
     if style_ids != [
@@ -56,8 +56,8 @@ def main() -> None:
             "assets/style-references/monochrome-manga-sheet/front-character.png",
         ),
         "streetwear-pixel-sheet": (
-            "assets/style-references/streetwear-pixel-sheet/accessory-purple-sheet.png",
-            "assets/style-references/streetwear-pixel-sheet/accessory-purple-front.png",
+            "assets/style-references/streetwear-pixel-sheet/glasses-cyan.png",
+            "assets/style-references/streetwear-pixel-sheet/glasses-cyan.png",
         ),
         "charcoal-ink-chibi": (
             "assets/style-references/charcoal-ink-chibi/reference.png",

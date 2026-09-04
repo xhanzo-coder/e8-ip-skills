@@ -13,13 +13,13 @@ VALIDATOR = SKILL_ROOT / "scripts/validate_pixel_run.py"
 STYLE_ROOT = SKILL_ROOT / "assets/style-references/streetwear-pixel-sheet"
 ANCHOR_IDS = (
     "pixel_anchor_1_uniform_grid",
-    "pixel_anchor_2_limited_palette",
-    "pixel_anchor_3_youth_proportion",
+    "pixel_anchor_2_dark_palette",
+    "pixel_anchor_3_compact_youth_proportion",
     "pixel_anchor_4_hair_clusters",
     "pixel_anchor_5_simple_face",
     "pixel_anchor_6_streetwear_volume",
-    "pixel_anchor_7_relaxed_lower_body",
-    "pixel_anchor_8_dark_accent",
+    "pixel_anchor_7_single_accent",
+    "pixel_anchor_8_clean_fullbody",
 )
 
 
@@ -53,23 +53,20 @@ def run_validator(run_dir: Path, phase: str, expect_success: bool) -> None:
 
 
 def make_contract(run_dir: Path, identity: Path) -> dict[str, object]:
-    primary = str((STYLE_ROOT / "accessory-purple-front.png").resolve())
-    secondary = str((STYLE_ROOT / "accessory-purple-head.png").resolve())
+    primary = str((STYLE_ROOT / "glasses-cyan.png").resolve())
     return {
         "schema_version": "1.0",
         "style_id": "streetwear-pixel-sheet",
         "task_type": "base-character",
         "reference_maturity": "limited-multi-reference",
-        "route": "accessory-purple",
+        "route": "glasses-cyan",
         "status": "planned",
         "identity_references": [str(identity.resolve())],
         "primary_style_reference": primary,
-        "secondary_style_references": [secondary],
-        "reference_order": [primary, str(identity.resolve()), secondary],
-        "full_sheet_reference": str(
-            (STYLE_ROOT / "accessory-purple-sheet.png").resolve()
-        ),
-        "full_sheet_passed_to_generation": False,
+        "secondary_style_references": [],
+        "reference_order": [primary, str(identity.resolve())],
+        "full_sheet_reference": primary,
+        "full_sheet_passed_to_generation": True,
         "prompt_file": "prompts/candidate-v1.md",
         "candidate_file": None,
         "qa_file": None,

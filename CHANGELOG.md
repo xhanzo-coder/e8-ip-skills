@@ -12,6 +12,8 @@ All notable changes to the E8 IP Skills suite will be documented here.
 - Replaced the hidden `mint-ink-chibi` candidate with `charcoal-ink-chibi`, preserving compact proportion and minimal-face rules while switching to charcoal hair, black clothing and gray facial accents.
 - Added a new owner-confirmed MIT reference image and renamed the candidate run contract, validator and regression tests.
 - Completed one real long-hair calibration with the user-selected reference outfit; it passed the `interpreted` identity threshold and all eight charcoal style anchors, pending user confirmation and broader coverage.
+- Replaced all six legacy Pinterest-derived pixel references with two owner-confirmed front-view references: `glasses-cyan` and `long-hair-gold`.
+- Reset the pixel style to a hidden candidate and removed inherited claims for turnaround, avatar and other untested outputs.
 
 ### Release
 

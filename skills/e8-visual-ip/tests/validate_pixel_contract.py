@@ -31,13 +31,12 @@ def main() -> None:
         [
             "reference_maturity: limited-multi-reference",
             "default_likeness: interpreted",
-            "accessory_purple_front:",
-            "hair_accent_dark_front:",
+            "glasses_cyan:",
+            "long_hair_gold:",
             "统一方形像素网格",
-            "约 16～28 个有意义颜色",
-            "暗色主体＋一个强调色系统",
-            "nearest-neighbor",
-            "普通插画套马赛克",
+            "只能选择一个",
+            "不进入正式目录",
+            "高清插画套马赛克",
         ],
         "streetwear-pixel-sheet.md",
     )
@@ -45,8 +44,8 @@ def main() -> None:
         skill,
         [
             "streetwear-pixel-sheet",
-            "街头像素角色设定风",
-            "limited-multi-reference",
+            "暗黑街头像素角色风",
+            "两张新参考待重新验证",
             "专属运行校验器",
         ],
         "SKILL.md",
@@ -100,12 +99,8 @@ def main() -> None:
 
     reference_dir = SKILL_ROOT / "assets/style-references/streetwear-pixel-sheet"
     expected_assets = {
-        "accessory-purple-sheet.png",
-        "accessory-purple-front.png",
-        "accessory-purple-head.png",
-        "hair-accent-dark-sheet.png",
-        "hair-accent-dark-front.png",
-        "hair-accent-dark-head.png",
+        "glasses-cyan.png",
+        "long-hair-gold.png",
     }
     actual_assets = {path.name for path in reference_dir.iterdir() if path.is_file()}
     if actual_assets != expected_assets:
@@ -127,9 +122,9 @@ def main() -> None:
     }
     required_cases = {
         "pixel_create",
-        "pixel_route_accessory",
-        "pixel_route_hair",
-        "pixel_turnaround",
+        "pixel_route_glasses_cyan",
+        "pixel_route_long_hair_gold",
+        "pixel_turnaround_unverified",
         "pixel_audit",
         "pixel_contamination",
     }
