@@ -116,7 +116,6 @@ def main() -> None:
     style_files = {path.name for path in (SKILL_ROOT / "references/styles").glob("*.md")}
     expected_style_files = {
         "soft-toy-chibi.md",
-        "monochrome-manga-sheet.md",
         "streetwear-pixel-sheet.md",
         "charcoal-ink-chibi.md",
     }
@@ -133,7 +132,6 @@ def main() -> None:
     }
     expected_asset_directories = {
         "soft-toy-chibi",
-        "monochrome-manga-sheet",
         "streetwear-pixel-sheet",
         "charcoal-ink-chibi",
     }

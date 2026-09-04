@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "seed": "yao-output-eval-blind-v1",
   "summary": {
-    "pair_count": 8,
-    "with_skill_expected_count": 8,
+    "pair_count": 7,
+    "with_skill_expected_count": 7,
     "baseline_expected_count": 0
   },
   "answers": [
@@ -54,15 +54,6 @@
     },
     {
       "case_id": "confirmed-derivative-fast-path",
-      "variant_a_role": "with_skill",
-      "variant_b_role": "baseline",
-      "expected_winner_role": "with_skill",
-      "expected_winner_variant": "A",
-      "score_winner_role": "with_skill",
-      "delta": 100.0
-    },
-    {
-      "case_id": "monochrome-recognizable-adult-identity",
       "variant_a_role": "with_skill",
       "variant_b_role": "baseline",
       "expected_winner_role": "with_skill",

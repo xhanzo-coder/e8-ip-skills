@@ -31,35 +31,6 @@
     },
     {
       "schema_version": "1.2",
-      "id": "monochrome-manga-sheet",
-      "display_name": "极简黑白漫画设定风",
-      "aliases": ["黑白漫画人物", "极简黑白线稿", "黑白三视图", "漫画设定稿", "纯黑白人物"],
-      "lifecycle_status": "active",
-      "catalog_visible": true,
-      "catalog_preview": "assets/style-references/monochrome-manga-sheet/reference.png",
-      "catalog_primary_style": "assets/style-references/monochrome-manga-sheet/front-character.png",
-      "catalog_summary": "纯黑白成品、克制线条和大量留白，以剪影与黑白面积保持身份。",
-      "catalog_best_for": ["黑白角色设定", "简洁头像", "正侧背三视图"],
-      "transformation_policy": "structural-redraw",
-      "reference_maturity": "single-reference",
-      "default_likeness": "recognizable",
-      "definition": "references/styles/monochrome-manga-sheet.md",
-      "reference_assets": [
-        "assets/style-references/monochrome-manga-sheet/reference.png",
-        "assets/style-references/monochrome-manga-sheet/front-character.png",
-        "assets/style-references/monochrome-manga-sheet/face-hair-detail.png"
-      ],
-      "negative_examples": [
-        "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-head-large.png",
-        "assets/qa-negative-examples/monochrome-manga-sheet/generic-anime-body-long.png"
-      ],
-      "supported_outputs": ["base-character", "turnaround", "avatar"],
-      "unverified_outputs": ["expression", "action", "sticker", "outfit", "scene"],
-      "run_validator": "scripts/validate_monochrome_run.py",
-      "prompt_profiles": []
-    },
-    {
-      "schema_version": "1.2",
       "id": "streetwear-pixel-sheet",
       "display_name": "像素角色设定风",
       "aliases": ["像素人物", "像素个人IP", "像素三视图", "像素角色", "像素角色设定"],

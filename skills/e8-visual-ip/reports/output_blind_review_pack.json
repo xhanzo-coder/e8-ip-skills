@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "seed": "yao-output-eval-blind-v1",
   "summary": {
-    "pair_count": 8,
+    "pair_count": 7,
     "answer_key_separate": true,
-    "with_skill_hidden_count": 8
+    "with_skill_hidden_count": 7
   },
   "pairs": [
     {
@@ -74,7 +74,7 @@
       ],
       "variant_a": {
         "blind_id": "style-reference-fidelity:A",
-        "output": "我会参考图片的黑白配色和漫画感觉，把你的照片处理成相似风格。"
+        "output": "我会参考图片的像素轮廓和游戏感觉，把你的照片处理成相似风格。"
       },
       "variant_b": {
         "blind_id": "style-reference-fidelity:B",
@@ -222,48 +222,6 @@
       }
     },
     {
-      "case_id": "monochrome-recognizable-adult-identity",
-      "prompt": "根据我的照片生成黑白漫画个人IP，要保持像我。",
-      "input_files": [
-        "fixtures/monochrome-identity-regressions.json"
-      ],
-      "metadata": {
-        "fixture_label": "file-backed fixture",
-        "evidence_scope": "textual contract derived from Trump and Sam Altman failures; real regenerated visual A/B remains missing evidence"
-      },
-      "review_instruction": "Pick A or B based only on the rubric. Do not infer which output came from the skill.",
-      "rubric": [
-        {
-          "id": "single-candidate-boundary",
-          "description": "一次授权只生成一张最终候选。",
-          "weight": 1.0
-        },
-        {
-          "id": "identity-first-routing",
-          "description": "可识别任务使用身份优先且隔离匿名脸部裁图。",
-          "weight": 1.0
-        },
-        {
-          "id": "identity-fingerprint",
-          "description": "相似度由五项脸部身份指纹验证。",
-          "weight": 1.0
-        },
-        {
-          "id": "dual-gate",
-          "description": "身份与风格均通过才能批准。",
-          "weight": 1.0
-        }
-      ],
-      "variant_a": {
-        "blind_id": "monochrome-recognizable-adult-identity:A",
-        "output": "默认 likeness=recognizable，每次授权 one candidate only。先提取脸部比例、发际线额头、眼眉关系、中下脸关系、年龄神态五项身份指纹；采用 identity-first，把最清晰主身份图放第一、front-character.png 放第二，并禁止把 face-hair-detail.png 传入生成。眼睛使用身份自适应黑白图形语法，不统一成大圆眼。身份或风格任一失败即 rejected，停止并等待用户决定是否额外校准，不自动生成第二张。"
-      },
-      "variant_b": {
-        "blind_id": "monochrome-recognizable-adult-identity:B",
-        "output": "采用 interpreted 相似度，把黑白少年风格图放在第一位，让大圆眼、少年脸和风格发型主导，再用发型与服装符号表示人物。若不像就自动补一张头像继续校准。"
-      }
-    },
-    {
       "case_id": "first-use-style-discovery",
       "prompt": "我第一次使用这个 Skill，上传了照片，帮我创建个人 IP。",
       "input_files": [],
@@ -300,7 +258,7 @@
       },
       "variant_b": {
         "blind_id": "first-use-style-discovery:B",
-        "output": "先分析人物参考，再真实展示三个内置风格的正式 catalog_preview：软萌潮玩 Q 版、极简黑白漫画设定风、像素角色设定风；每张卡片说明特点、适用用途、已验证与未验证产物，并标出一个有理由的推荐。随后停止，等待用户选择风格或回复‘采用推荐’；目录选择不等于人物方案确认或生图授权。"
+        "output": "先分析人物参考，再真实展示两个内置风格的正式 catalog_preview：软萌潮玩 Q 版、像素角色设定风；每张卡片说明特点、适用用途、已验证与未验证产物，并标出一个有理由的推荐。随后停止，等待用户选择风格或回复‘采用推荐’；目录选择不等于人物方案确认或生图授权。"
       }
     }
   ]

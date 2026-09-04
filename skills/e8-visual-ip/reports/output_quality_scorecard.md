@@ -2,12 +2,12 @@
 
 This v0 scorecard compares static without-skill and with-skill outputs using assertion grading.
 
-- Cases: `8`
+- Cases: `7`
 - Baseline pass rate: `0.0`
 - With-skill pass rate: `100.0`
 - Delta: `100.0`
 - Regressions: `0`
-- Blind A/B pairs: `8`
+- Blind A/B pairs: `7`
 - Gate pass: `True`
 
 Blind review artifacts are generated separately so reviewers can inspect A/B outputs without seeing the answer key.
@@ -23,7 +23,6 @@ Run output review adjudication after reviewer decisions are recorded; pending ca
 | base-character-pre-generation-gate | 0.0 | 100.0 | 100.0 | with_skill | None |
 | custom-style-calibration-gate | 0.0 | 100.0 | 100.0 | with_skill | None |
 | confirmed-derivative-fast-path | 0.0 | 100.0 | 100.0 | with_skill | None |
-| monochrome-recognizable-adult-identity | 0.0 | 100.0 | 100.0 | with_skill | None |
 | first-use-style-discovery | 0.0 | 100.0 | 100.0 | with_skill | None |
 
 ## Failure Taxonomy

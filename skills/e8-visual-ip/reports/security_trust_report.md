@@ -16,7 +16,7 @@
 - Interactive scripts: `0`
 - Package hash scope: `source-contract-without-generated-reports`
 - Package hash files: `42`
-- Package SHA256: `2910f87d6eadd813b74d25163cad0f6c1e345242e4f4503e9034d3340f09da33`
+- Package SHA256: `d28d49a3fc4c5753746f3f3e074334276e3679d689110f3f388402759051f26e`
 
 ## Failures
 
@@ -63,6 +63,6 @@
 | Script | Interface | Declared | Argparse | Main Guard | Input | Network | File Write | Subprocess | Reason |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | scripts\character_pack.py | cli | True | True | True | False | False | True | False |  |
-| scripts\validate_monochrome_run.py | cli | True | True | True | False | False | False | False |  |
+| scripts\validate_charcoal_ink_run.py | cli | False | True | True | False | False | False | False | Default CLI classification; add SCRIPT_INTERFACE for internal modules. |
 | scripts\validate_pixel_run.py | cli | True | True | True | False | False | False | False |  |
 | scripts\validate_style_registry.py | cli | True | True | True | False | False | False | False |  |

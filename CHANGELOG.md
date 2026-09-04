@@ -15,6 +15,10 @@ All notable changes to the E8 IP Skills suite will be documented here.
 - Replaced all six legacy Pinterest-derived pixel references with two owner-confirmed generic style references.
 - Preserved the existing general pixel style and capabilities; the new references do not define user hair, glasses, earrings, clothing, gender or palette.
 
+### Removed
+
+- Removed the `monochrome-manga-sheet` style, its reference assets, negative examples, run validator and dedicated regression fixtures because the style is no longer adopted.
+
 ### Release
 
 - The repository owner confirmed public redistribution rights for all currently registered visual assets.

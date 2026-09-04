@@ -2,7 +2,7 @@
 
 This packet hides whether each variant came from the baseline or the skill-guided output. Use the separate answer key only after review.
 
-- Pairs: `8`
+- Pairs: `7`
 - Seed: `yao-output-eval-blind-v1`
 - Answer key separate: `True`
 
@@ -34,7 +34,7 @@ Rubric:
 
 ### Variant A
 
-我会参考图片的黑白配色和漫画感觉，把你的照片处理成相似风格。
+我会参考图片的像素轮廓和游戏感觉，把你的照片处理成相似风格。
 
 ### Variant B
 
@@ -108,24 +108,6 @@ Rubric:
 
 请重新选择人物方向、相似程度、风格和配色。
 
-## Case: monochrome-recognizable-adult-identity
-
-Prompt: 根据我的照片生成黑白漫画个人IP，要保持像我。
-
-Rubric:
-- `single-candidate-boundary` (1.0): 一次授权只生成一张最终候选。
-- `identity-first-routing` (1.0): 可识别任务使用身份优先且隔离匿名脸部裁图。
-- `identity-fingerprint` (1.0): 相似度由五项脸部身份指纹验证。
-- `dual-gate` (1.0): 身份与风格均通过才能批准。
-
-### Variant A
-
-默认 likeness=recognizable，每次授权 one candidate only。先提取脸部比例、发际线额头、眼眉关系、中下脸关系、年龄神态五项身份指纹；采用 identity-first，把最清晰主身份图放第一、front-character.png 放第二，并禁止把 face-hair-detail.png 传入生成。眼睛使用身份自适应黑白图形语法，不统一成大圆眼。身份或风格任一失败即 rejected，停止并等待用户决定是否额外校准，不自动生成第二张。
-
-### Variant B
-
-采用 interpreted 相似度，把黑白少年风格图放在第一位，让大圆眼、少年脸和风格发型主导，再用发型与服装符号表示人物。若不像就自动补一张头像继续校准。
-
 ## Case: first-use-style-discovery
 
 Prompt: 我第一次使用这个 Skill，上传了照片，帮我创建个人 IP。
@@ -142,4 +124,4 @@ Rubric:
 
 ### Variant B
 
-先分析人物参考，再真实展示三个内置风格的正式 catalog_preview：软萌潮玩 Q 版、极简黑白漫画设定风、像素角色设定风；每张卡片说明特点、适用用途、已验证与未验证产物，并标出一个有理由的推荐。随后停止，等待用户选择风格或回复‘采用推荐’；目录选择不等于人物方案确认或生图授权。
+先分析人物参考，再真实展示两个内置风格的正式 catalog_preview：软萌潮玩 Q 版、像素角色设定风；每张卡片说明特点、适用用途、已验证与未验证产物，并标出一个有理由的推荐。随后停止，等待用户选择风格或回复‘采用推荐’；目录选择不等于人物方案确认或生图授权。

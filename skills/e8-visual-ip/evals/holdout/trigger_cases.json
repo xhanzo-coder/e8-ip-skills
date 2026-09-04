@@ -3,7 +3,7 @@
   "should_trigger": [
     {"text": "这张证件照很普通，请你自己提取我的特征并重新设计成固定人物形象。", "family": "implicit_redesign"},
     {"text": "以后每篇内容都想用同一个卡通分身，先帮我把基础角色定下来。", "family": "reuse_intent"},
-    {"text": "给已确认角色换成纯黑白漫画设定稿，但脸和招牌耳饰要还是同一个人。", "family": "style_switch"},
+    {"text": "给已确认角色换成我上传的扁平插画风，但脸和招牌耳饰要还是同一个人。", "family": "style_switch"},
     {"text": "我的像素人物正面已经通过，接着做背面和侧面角色设定。", "family": "pixel_turnaround"},
     {"text": "这两版都很好看，可我怀疑第二版已经不是同一个人物了，帮我审查。", "family": "identity_audit"},
     {"text": "为保存过的角色新增一套冬季换装，不能改变人物基准。", "family": "outfit_derivative"},

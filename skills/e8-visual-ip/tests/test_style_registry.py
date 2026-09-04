@@ -30,19 +30,18 @@ def main() -> None:
     payload = json.loads(result.stdout)
     if payload["valid"] is not True:
         raise AssertionError("风格注册表未通过校验。")
-    if payload["style_count"] != 4:
+    if payload["style_count"] != 3:
         raise AssertionError(f"当前注册风格数量错误：{payload['style_count']}")
-    if payload["active_style_count"] != 3:
+    if payload["active_style_count"] != 2:
         raise AssertionError(f"当前正式风格数量错误：{payload['active_style_count']}")
     if payload["candidate_style_count"] != 1:
         raise AssertionError(f"当前候选风格数量错误：{payload['candidate_style_count']}")
-    if payload["asset_count"] != 12:
+    if payload["asset_count"] != 7:
         raise AssertionError(f"当前已登记风格资产数量错误：{payload['asset_count']}")
 
     style_ids = [entry["id"] for entry in payload["styles"]]
     if style_ids != [
         "soft-toy-chibi",
-        "monochrome-manga-sheet",
         "streetwear-pixel-sheet",
         "charcoal-ink-chibi",
     ]:
@@ -52,10 +51,6 @@ def main() -> None:
         "soft-toy-chibi": (
             "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
             "assets/style-references/soft-toy-chibi/minimal-face-sheet.png",
-        ),
-        "monochrome-manga-sheet": (
-            "assets/style-references/monochrome-manga-sheet/reference.png",
-            "assets/style-references/monochrome-manga-sheet/front-character.png",
         ),
         "streetwear-pixel-sheet": (
             "assets/style-references/streetwear-pixel-sheet/reference-01.png",
